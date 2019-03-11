@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 16:57:22 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/11 15:00:31 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/11 17:39:25 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,14 @@ int				find_size(t_ligne **line)
 int				ft_is_dir(char *str)
 {
 	int			i;
-	int			r;
 
-	r = 0;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == '%')
 			return (0);
-		if (str[i] == 'r')
-			r++;
 		i++;
 	}
-	if (r == 2)
-		return (0);
 	return (1);
 }
 

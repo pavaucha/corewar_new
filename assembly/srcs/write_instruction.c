@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 20:14:16 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/11 16:05:08 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/11 16:59:04 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,10 @@ static void	ft_complete_write(t_ligne **line, char *str, int l, int fd)
 	}
 	else
 	{
-		ft_printf("%s\n", str + 1);
 		nb = ft_atoi(str + 1);
 		nb = (nb < 0) ? -nb : nb;
 		if (ft_atoi(str + 1) < 0)
 			sign = 1;
-		ft_printf("nb = %lli\n", nb);
 	}
 	if (instruct_space(line) == 1 || str[0] == ':')
 		ft_affiche(nb, sign, 16, fd);

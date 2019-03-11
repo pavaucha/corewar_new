@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 11:25:17 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/11 15:18:57 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/11 17:21:01 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		ft_find_label(t_ligne **line, int fd)
 	ft_strcmp((*line)->instruct, "lld") == 0 ? ft_arg(line, fd, 13, 1) : 0;
 	ft_strcmp((*line)->instruct, "lldi") == 0 ? ft_arg(line, fd, 14, 1) : 0;
 	ft_strcmp((*line)->instruct, "lfork") == 0 ? ft_arg(line, fd, 15, 0) : 0;
-	ft_strcmp((*line)->instruct, "aff") == 0 ? ft_arg(line, fd, 16, 0) : 0;
+	ft_strcmp((*line)->instruct, "aff") == 0 ? ft_arg(line, fd, 16, 1) : 0;
 }
 
 static t_ligne	*ft_free_line(t_ligne **line)

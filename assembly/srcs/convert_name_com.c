@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 12:37:24 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/11 15:02:55 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/11 17:40:20 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		ft_nb_octet(char *str, t_ligne **nline)
 	else if (ft_strcmp(str, "aff") == 0)
 		(*nline)->nb_loctet = 3;
 	else
-		(*nline)->nb_loctet = (ft_is_dir((*nline)->arg) == 0) ? 4 : 5;
+		(*nline)->nb_loctet = find_size(nline);
 }
 
 
@@ -89,7 +89,7 @@ static t_ligne	*begin_struct(char **str, int *j, int *i)
 		(*j)++;
 	if (str[*i][*j] == ':' && str[*i][*j - 1] != '%')
 	{
-		*j = 0;
+		*j = *j + 1;
 		return (complete_label(str[*i]));
 	}
 	else
@@ -124,7 +124,7 @@ static t_ligne	*initialize_struct(char **str)
 			j++;
 		}
 		else
-			j = 0;
+			j = (begin->next == NULL && i == 0) ? j : 0;
 		while (str[i][j] && ft_isblank(str[i][j]) == 1)
 			j++;
 		if (str[i][j] != '\0')
@@ -167,11 +167,11 @@ void			convert_name_com(char **str, char *name)
 	begin = initialize_struct(str + 2);
 	head = initialize_header(str);
 	tmp = begin;
-/*	while (tmp != NULL)
+	while (tmp != NULL)
 	{
 		ft_printf("label = %s\noctet = %i\ninstruct = %s\narg = %s\n\n\n", tmp->label, tmp->nb_loctet, tmp->instruct, tmp->arg);
 		tmp = tmp->next;
-	}*/
+	}
 	find_octet(&begin, open(new_n, O_WRONLY | O_TRUNC | O_CREAT, 0600), head);
 	ft_putstr("Writing output program to ");
 	ft_putendl(new_n);
