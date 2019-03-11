@@ -89,7 +89,7 @@ int		endline_err(t_file *x, int col, int c)
 
 int		label_err(t_file *x, t_check_label *lab)
 {
-	if (!x->err || x->err == 19)
+	if (!x->err || x->err == 18 || x->err == 19)
 	{
 		x->err = 12;
 		x->col_err = lab->c + 1;

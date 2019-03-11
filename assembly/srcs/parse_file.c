@@ -116,8 +116,11 @@ int		parse_file(t_file *x, char *buf)
 	int		ret2;
 	int		i;
 
+	buf = NULL;
 	while ((ret = get_next_line(x->fd, &buf)) != 0)
 	{
+		// ft_printf("err = %d\n", x->err);
+		// ft_printf("buf = %s\n", buf);
 		if (x->l == 0 && buf[0] != '\0' && !ft_isblank(buf[0]) && buf[0] != '#'
 			&& buf[0] != '\n' && buf[0] != '.' && buf[0] != ';')
 			break ;

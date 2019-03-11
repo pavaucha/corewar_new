@@ -69,7 +69,9 @@ void	check_inst(char *buf, t_file *x, char *inst)
 int		body(char *buf, t_file *x)
 {
 	char *inst;
+	int save;
 
+	save = x->err;
 	if (check_label(buf, x) == 1)
 		return (0);
 	if (x->name == 0 || x->comment == 0)
@@ -77,8 +79,11 @@ int		body(char *buf, t_file *x)
 		inst_wrong(x, buf);
 		return (0);
 	}
+	x->err = 0;
 	if (char_err(buf, x) == -1)
 		return (print_err(x, x->err));
+	if (save)
+		x->err = save;
 	if (x->err == 18 && x->body)
 		return (0);
 	if (!(inst = ft_strndup(&buf[x->c], (int)ft_strlen_custom(&buf[x->c]))))
@@ -106,6 +111,7 @@ int		endline(t_file *x, char *buf)
 
 int		check_line(char **buf, t_file *x)
 {
+
 	if (endline(x, (*buf)) == 1)
 		return (0);
 	if (lex_err((*buf), x->c) && (*buf)[x->c] != '.')

@@ -168,10 +168,7 @@ void			convert_name_com(char **str, char *name)
 	head = initialize_header(str);
 	tmp = begin;
 	while (tmp != NULL)
-	{
-		ft_printf("label = %s\noctet = %i\ninstruct = %s\narg = %s\n\n\n", tmp->label, tmp->nb_loctet, tmp->instruct, tmp->arg);
 		tmp = tmp->next;
-	}
 	find_octet(&begin, open(new_n, O_WRONLY | O_TRUNC | O_CREAT, 0600), head);
 	ft_putstr("Writing output program to ");
 	ft_putendl(new_n);

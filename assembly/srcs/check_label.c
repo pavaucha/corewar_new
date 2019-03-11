@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-static int		fill_name_label(char **name, char *s)
+static int		fill_name_label(t_file *x, char **name, char *s)
 {
 	if ((*name) == NULL)
 	{
@@ -22,7 +22,7 @@ static int		fill_name_label(char **name, char *s)
 			return (-1);
 		}
 	}
-	if (!((*name) = ft_strjoin_char((*name), s, '\n')))
+	if (x->err != 18 && !((*name) = ft_strjoin_char((*name), s, '\n')))
 	{
 		ft_strdel(&s);
 		return (-1);
@@ -50,7 +50,7 @@ int				fill_exec_label(char *buf, t_file *x, int len, int c)
 	char		*s;
 
 	s = NULL;
-	if (x->err && c == 1)
+	if (x->err && x->err != 18 && c == 1)
 	{
 		ft_strdel(&name);
 		return (-1);
@@ -58,7 +58,7 @@ int				fill_exec_label(char *buf, t_file *x, int len, int c)
 	if (buf != NULL)
 		if (!(s = ft_strndup(&buf[x->c], len)))
 			return (-1);
-	if (c == 1 && fill_name_label(&name, s) == -1)
+	if (c == 1 && fill_name_label(x, &name, s) == -1)
 		return (-1);
 	else if (c == 3 && fill_exec_label_2(name, x) == -1)
 		return (-1);
