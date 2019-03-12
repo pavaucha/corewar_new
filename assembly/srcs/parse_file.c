@@ -72,7 +72,7 @@ int		no_newline(t_file *x)
 		return (0);
 	if (!(x->err >= 5 && x->err <= 11) && x->err != 2 && x->err != 4
 		&& x->err != 13 && x->err != 14 && !x->endline && x->err != 17
-		&& x->err != 18)
+		&& x->err != 18 && x->comment && x->name)
 	{
 		ft_putstr_fd("Syntax error - unexpected end of input ", 2);
 		ft_putstr_fd("(Perhaps you forgot to end with a newline ?)\n", 2);
@@ -85,11 +85,11 @@ int		err(t_file *x, int ret, char *buf)
 {
 	char	**file;
 
+	fill_label(NULL, x, 0, 3);
 	if (ret == 0 || buf)
 		ft_strdel(&buf);
 	if (no_newline(x) == -1)
 		return (-1);
-	fill_label(NULL, x, 0, 3);
 	if (ret == 0 && x->l == -1)
 		save_err(x, x->c, 14);
 	if (x->err == 18 && !x->body)
@@ -97,7 +97,10 @@ int		err(t_file *x, int ret, char *buf)
 	if (x->err && x->err != 18 && x->err != 19)
 		return (print_err(x, x->err));
 	if (!(file = ft_strsplit(x->s, '\n')))
-		return (-1);
+	{
+		save_err(x, 0, 14);
+		return (print_err(x, x->err));
+	}
 	if (!(x->file = fill_file(file, -1)))
 		return (-1);
 	ft_strdel(&x->s);
@@ -126,16 +129,10 @@ int		parse_file(t_file *x, char *buf)
 			return (fill_exec_label(NULL, x, 0, 1));
 		if (ret2 == 1 && x->l != 1)
 			continue ;
-		// ft_printf("body = %d\n", x->body);
-		// ft_printf("comment = %d\n", x->comment);
-		// ft_printf("name = %d\n", x->name);
 		if (!x->err)
 			if (!(x->s = ft_strjoin_char(x->s, x->body ? buf : "", '\n')))
-			{
-				ft_printf("x->s = %s\n", x->s);
-				ft_printf("x->s = %p\n", x->s);
-				return (-1);
-			}
+				break;
+				// return (-1);
 		ft_strdel(&buf);
 	}
 	if (err(x, ret, buf) == -1)

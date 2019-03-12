@@ -72,13 +72,13 @@ int		body(char *buf, t_file *x)
 	int		save;
 
 	save = x->err;
-	if (check_label(buf, x) == 1)
-		return (0);
 	if (x->name == 0 || x->comment == 0)
 	{
 		inst_wrong(x, buf);
 		return (0);
 	}
+	if (check_label(buf, x) == 1)
+		return (0);
 	x->err = 0;
 	if (char_err(buf, x) == -1)
 		return (print_err(x, x->err));
