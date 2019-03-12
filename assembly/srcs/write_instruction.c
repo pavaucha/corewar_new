@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 20:14:16 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/12 11:12:33 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/12 13:42:49 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ static intmax_t	ft_overflow(char *str, int *sign)
 	{
 		if (str[i] != '9')
 			return (ft_atoi(str + i));
-		nb = ft_atoi(str + 1 + i);
-		if (nb <= 223372036854775808 && str[i] == '9' && i == 1)
+		nb = ft_atoi(str + i + 1);
+		if (nb <= 223372036854775807 && str[i] == '9' && i == 1)
 		{
 			(*sign) = i;
-			return (nb = ft_atoi(str + 1));
+			return (nb = ft_atoi(str + i));
 		}
 		else if (nb <= 223372036854775807 && str[i] == '9' && i == 0)
 		{
 			(*sign) = i;
-			return (nb = ft_atoi(str + 1));
+			return (nb = ft_atoi(str + i));
 		}
 		else
 			nb = ((*sign) == 1) ? 1 : 0; 
@@ -77,7 +77,7 @@ static void	ft_complete_write(t_ligne **line, char *str, int l, int fd)
 
 	i = (str[0] == '%') ? 1 : 0;
 	sign = 0;
-	if (str[i] == ':' || str[i] == ':')
+	if (str[i] == ':')
 	{
 		nb = (*line)->pos[l];
 		nb = ((*line)->pos[l] < 0) ? -nb : nb;
@@ -107,12 +107,17 @@ void		ft_write_arg(t_ligne **line, int k, int fd)
 	int			j;
 	int			l;
 	intmax_t	nb;
+	char		*tmp;
 
 	l = 0;
 	if ((str = ft_strsplit((*line)->arg, ',')) == NULL)
 		return ;
 	while (str[++k])
 	{
+		tmp = str[k];
+		if ((str[k] = ft_strtrim(str[k])) == NULL)
+			return ;
+		ft_strdel(&tmp);
 		j = 0;
 		while (ft_isblank(str[k][j]))
 			j++;
