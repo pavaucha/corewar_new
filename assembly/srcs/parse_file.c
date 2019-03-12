@@ -70,6 +70,8 @@ int		no_newline(t_file *x)
 {
 	if (!x->body)
 		return (0);
+	ft_printf(" >>> x->err = %d\n", x->err);
+	ft_printf(" >>> x->endline = %d\n", x->endline);
 	if (!(x->err >= 5 && x->err <= 11) && x->err != 2 && x->err != 4
 		&& x->err != 13 && x->err != 14 && !x->endline && x->err != 17
 		&& x->err != 18)
@@ -119,7 +121,7 @@ int		parse_file(t_file *x, char *buf)
 	buf = NULL;
 	while ((ret = get_next_line(x->fd, &buf)) != 0)
 	{
-		// ft_printf("err = %d\n", x->err);
+		ft_printf("ret = %d\n", ret);
 		// ft_printf("buf = %s\n", buf);
 		if (x->l == 0 && buf[0] != '\0' && !ft_isblank(buf[0]) && buf[0] != '#'
 			&& buf[0] != '\n' && buf[0] != '.' && buf[0] != ';')
