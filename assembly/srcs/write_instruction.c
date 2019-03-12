@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 20:14:16 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/12 17:19:22 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/12 18:51:11 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	instruct_space(t_ligne **line)
 			|| ft_strcmp((*line)->instruct, "sti") == 0
 			|| ft_strcmp((*line)->instruct, "ldi") == 0
 			|| ft_strcmp((*line)->instruct, "zjmp") == 0
+			|| ft_strcmp((*line)->instruct, "lfork") == 0
 			|| ft_strcmp((*line)->instruct, "fork") == 0)
 		return (1);
 	else
