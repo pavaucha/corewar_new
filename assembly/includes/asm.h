@@ -301,7 +301,7 @@ int							ft_swap_bits_16(char *dst, int sign);
 
 int							separator(t_file *x);
 int							init_var(t_file *x);
-void						reset_var(t_file *x, int *i);
+void						reset_var(t_file *x, int *i, int ret);
 int							no_params(t_file *x, char *buf, int i);
 int							fill_file2(t_file *x, int c, char *s2, int j);
 

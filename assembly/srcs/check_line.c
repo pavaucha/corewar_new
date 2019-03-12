@@ -68,8 +68,8 @@ void	check_inst(char *buf, t_file *x, char *inst)
 
 int		body(char *buf, t_file *x)
 {
-	char *inst;
-	int save;
+	char	*inst;
+	int		save;
 
 	save = x->err;
 	if (check_label(buf, x) == 1)
@@ -106,12 +106,13 @@ int		endline(t_file *x, char *buf)
 	}
 	if (x->err == 8)
 		endline_err(x, x->c, 2);
+	else if (buf[x->c] == '"')
+		x->err == 0 ? x->err = 18 : 0;
 	return (0);
 }
 
 int		check_line(char **buf, t_file *x)
 {
-
 	if (endline(x, (*buf)) == 1)
 		return (0);
 	if (lex_err((*buf), x->c) && (*buf)[x->c] != '.')

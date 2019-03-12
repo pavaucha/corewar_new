@@ -37,9 +37,9 @@ int				main(int ac, char **av)
 	t_file	x;
 
 	if ((init_var(&x)) == -1)
-		return (-1);
+		return (1);
 	if (valide_file(&x, ac, av) == -1)
-		return (-1);
+		return (1);
 	if ((parse_file(&x, NULL)) == -1)
 		return (free_parsing(&x, 1));
 	convert_name_com(x.file, x.name_f);

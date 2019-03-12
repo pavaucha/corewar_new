@@ -45,13 +45,18 @@ int		init_var(t_file *x)
 	return (0);
 }
 
-void	reset_var(t_file *x, int *i)
+void	reset_var(t_file *x, int *i, int ret)
 {
+	static int save_ret = 0;
+
 	x->c = 0;
 	x->inst = 0;
 	x->param = 1;
 	x->sep = 1;
 	*i = 0;
+	if (save_ret != 2)
+		x->endline = 0;
+	save_ret = ret;
 }
 
 int		no_params(t_file *x, char *buf, int i)
