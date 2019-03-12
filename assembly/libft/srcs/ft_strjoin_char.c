@@ -20,14 +20,16 @@ char	*ft_strjoin_char(char const *s1, char const *s2, char c)
 
 	s = (void*)s1;
 	if (!s1 || !s2 || !c)
+	{
+		free(s);
 		return (NULL);
+	}
 	len = ft_strlen(s1) + ft_strlen(s2) + 2;
 	if (!(new_s = ft_strnew(len)))
 		return (NULL);
 	ft_strcpy(new_s, (char*)s1);
 	ft_strcat(new_s, (char*)s2);
 	new_s[len - 2] = c;
-	if (s)
-		free(s);
+	free(s);
 	return (new_s);
 }

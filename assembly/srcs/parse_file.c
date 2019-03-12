@@ -102,7 +102,7 @@ int		err(t_file *x, int ret, char *buf)
 		return (-1);
 	ft_strdel(&x->s);
 	ft_strdel_tab(&file);
-	if (x->body == 0 || x->file[2] == NULL)
+	if (!x->body || !x->name || !x->comment || x->file[2] == NULL)
 	{
 		save_err(x, 0, 15);
 		return (print_err(x, x->err));
@@ -126,9 +126,16 @@ int		parse_file(t_file *x, char *buf)
 			return (fill_exec_label(NULL, x, 0, 1));
 		if (ret2 == 1 && x->l != 1)
 			continue ;
+		// ft_printf("body = %d\n", x->body);
+		// ft_printf("comment = %d\n", x->comment);
+		// ft_printf("name = %d\n", x->name);
 		if (!x->err)
 			if (!(x->s = ft_strjoin_char(x->s, x->body ? buf : "", '\n')))
+			{
+				ft_printf("x->s = %s\n", x->s);
+				ft_printf("x->s = %p\n", x->s);
 				return (-1);
+			}
 		ft_strdel(&buf);
 	}
 	if (err(x, ret, buf) == -1)
