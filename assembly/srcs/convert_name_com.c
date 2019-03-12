@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 12:37:24 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/12 11:54:53 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:32:30 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,15 @@ static t_ligne	*complete_label(char *str)
 	while (str[i] != ':')
 		i++;
 	nline->next = NULL;
-	ft_memset(nline->instruct, 0, 6);
 	if ((nline->label = ft_memalloc(i + 1)) == NULL)
 		return (NULL);
+	ft_memset(nline->instruct, 0, 6);
+	ft_memset(nline->pos, 0, 3);
 	nline->label = ft_strncpy(nline->label, str, i);
 	nline->ligne = NULL;
 	nline->arg = NULL;
 	nline->nb_loctet = 0;
+	nline->nb_octet_pos = 0;
 	return (nline);
 }
 
@@ -78,6 +80,7 @@ static t_ligne	*complete_instruct(char *str)
 	if ((nline->arg = ft_strdup(str + i)) == NULL)
 		return (NULL);
 	ft_nb_octet(nline->instruct, &nline);
+	nline->nb_octet_pos = 0;
 	return (nline);
 }
 

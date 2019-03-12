@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 20:14:16 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/12 13:42:49 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:19:22 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,27 +45,29 @@ static intmax_t	ft_overflow(char *str, int *sign)
 
 	nb = 0;
 	i = (str[0] == '-') ? 1 : 0;
-	(*sign) = (str[0] == '-') ? 0 : 1;
 	if (ft_strlen(str + i) > 19)
-		nb = ((*sign) == 1) ? 1 : 0;
+		nb = (i == 1) ? 0 : 1;
 	if (ft_strlen(str + i) == 19)
 	{
 		if (str[i] != '9')
 			return (ft_atoi(str + i));
 		nb = ft_atoi(str + i + 1);
-		if (nb <= 223372036854775807 && str[i] == '9' && i == 1)
+		if (nb <= 223372036854775808 && str[i] == '9' && i == 1)
 		{
-			(*sign) = i;
-			return (nb = ft_atoi(str + i));
+			nb = ft_atoi(str);
+			nb = (nb < 0) ? -nb : nb;
+			(*sign) = (ft_atoi(str) < 0) ? 1 : 0;
+			return (nb);
 		}
 		else if (nb <= 223372036854775807 && str[i] == '9' && i == 0)
 		{
-			(*sign) = i;
-			return (nb = ft_atoi(str + i));
+			nb = ft_atoi(str);
+			(*sign) = 0;
+			return (nb);
 		}
-		else
-			nb = ((*sign) == 1) ? 1 : 0; 
+		nb = (i == 1) ? 0 : 1;
 	}
+	(*sign) = (i == 1) ? 0 : 1;
 	return (nb);
 }
 
@@ -90,7 +92,7 @@ static void	ft_complete_write(t_ligne **line, char *str, int l, int fd)
 		nb = (nb < 0) ? -nb : nb;
 		if (ft_atoi(str + i) < 0)
 			sign = 1;
-		if (ft_strlen(str + i + sign) >= 19)
+		if (ft_strlen(str + i) >= 19)
 			nb = ft_overflow(str + i, &sign);
 	}
 	if (instruct_space(line) == 1 || str[0] == ':')

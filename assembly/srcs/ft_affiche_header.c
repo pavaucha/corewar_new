@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 11:00:52 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/02/27 18:13:06 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/12 17:55:20 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int			ft_swap_bits(char *dst, int sign)
 	char		*str;
 
 	j = -1;
+//	ft_printf("dst enter = %s\n", dst);
 	if ((str = ft_strnew(32)) == NULL)
 		return (-1);
 	i = (int)ft_strlen(dst) - 1;
