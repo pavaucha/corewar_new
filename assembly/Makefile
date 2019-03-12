@@ -6,7 +6,7 @@
 #    By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 09:44:22 by pavaucha          #+#    #+#              #
-#    Updated: 2019/03/11 16:48:15 by pavaucha         ###   ########.fr        #
+#    Updated: 2019/03/12 10:24:43 by pavaucha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ CFLAGS			:=	-Wall  \
 					-Werror \
 					-Wextra \
 
- OFLAGS =	-fsanitize=address	\
-			-fno-omit-frame-pointer		\
-			-fsanitize-address-use-after-scope
+# OFLAGS =	-fsanitize=address	\
+#			-fno-omit-frame-pointer		\
+#			-fsanitize-address-use-after-scope
 
 
 SOURCES = 	srcs/main.c \
