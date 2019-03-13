@@ -22,14 +22,14 @@ int		lex_err(char *buf, int i)
 	if (i > 0 && buf[i] == ':' && !(buf[i - 1] >= 'A' && buf[i - 1] <= 'Z')
 		&& (ft_isalnum(buf[i - 1]) || buf[i - 1] == '_'))
 		return (0);
-	if (buf[i] == ':' && (ft_isalpha(buf[i + 1]) || ft_isdigit(buf[i + 1])))
+	if (buf[i] == ':' && (ft_isalpha(buf[i + 1]) || ft_isdigit(buf[i + 1]) || buf[i + 1] == '_'))
 		return (0);
 	if (buf[i] == '-' && ft_isdigit(buf[i + 1]))
 		return (0);
 	if (buf[i] == '%' && (ft_isdigit(buf[i + 1])))
 		return (0);
 	if (buf[i] == '%' && (buf[i + 1] == ':' || buf[i + 1] == '-')
-		&& ft_isalnum(buf[i + 2]))
+		&& (ft_isalnum(buf[i + 2]) || buf[i + 2] == '_'))
 		return (buf[i + 2] >= 'A' && buf[i + 2] <= 'Z' ? 1 : 0);
 	return (1);
 }

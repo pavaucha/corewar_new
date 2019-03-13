@@ -56,7 +56,7 @@ void	print_err2(t_file *x, int c)
 	else if (c == 12)
 	{
 		ft_printf("No such label %s while attempting to derefe", x->name_err);
-		ft_printf("rence token [TOKEN][%03d:%03d] DIRECT_LABEL \"%%:%s\"\n",
+		ft_printf("rence token [TOKEN][%03d:%03d] LABEL \"%s\"\n",
 					x->line_err, x->col_err, x->name_err);
 	}
 	else if (c == 13)
