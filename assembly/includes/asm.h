@@ -284,7 +284,7 @@ void						ind(t_file *x, char *buf, char *inst);
 
 char						**fill_file(char **file, int i);
 int							check_file(t_file *x, char **buf, int *i, int ret);
-int							no_newline(t_file *x);
+int							no_newline(t_file *x, char *buf, int ret);
 int							err(t_file *x, int ret, char *buf);
 int							parse_file(t_file *x, char *buf);
 
