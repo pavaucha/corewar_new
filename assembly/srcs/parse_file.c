@@ -74,7 +74,8 @@ int		no_newline(t_file *x, char *buf, int ret)
 	if (!x->body)
 		return (0);
 	if (!(x->err >= 1 && x->err <= 11) && x->err != 13 && x->err != 14 &&
-		!x->endline && x->err != 17 && x->err != 18 && x->comment && x->name)
+		!x->endline && x->err != 17 && x->err != 18
+		&& x->comment && x->name)
 	{
 		ft_putstr_fd("Syntax error - unexpected end of input ", 2);
 		ft_putstr_fd("(Perhaps you forgot to end with a newline ?)\n", 2);
