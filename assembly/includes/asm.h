@@ -335,12 +335,12 @@ void						other_wrong(t_file *x, char *buf, int c);
 ** create_struct.c
 */
 
-t_ligne			*initialize_struct(char **str, int i);
+t_ligne						*initialize_struct(char **str, int i);
 
 /*
 ** ft_overflow.c
 */
 
-intmax_t	    ft_overflow(char *str, int *sign);
+intmax_t					ft_overflow(char *str, int *sign);
 
 #endif

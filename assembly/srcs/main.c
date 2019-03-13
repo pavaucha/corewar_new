@@ -42,8 +42,6 @@ int				main(int ac, char **av)
 		return (1);
 	if ((parse_file(&x, NULL)) == -1)
 		return (free_parsing(&x, 1));
-	// for (int i = 0; x.file[i]; i++)
-	// 	ft_printf("file[%d] = %s\n", x.file[i]);
 	convert_name_com(x.file, x.name_f);
 	free_parsing(&x, 0);
 	return (0);
