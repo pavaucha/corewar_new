@@ -12,7 +12,7 @@
 
 #include <asm.h>
 
-static int	instruct_space(t_ligne **line)
+static int		instruct_space(t_ligne **line)
 {
 	if (ft_strcmp((*line)->instruct, "lldi") == 0
 			|| ft_strcmp((*line)->instruct, "sti") == 0
@@ -25,7 +25,7 @@ static int	instruct_space(t_ligne **line)
 		return (0);
 }
 
-static void	ft_affiche(intmax_t nb, int sign, int size, int fd)
+static void		ft_affiche(intmax_t nb, int sign, int size, int fd)
 {
 	if (size == 16)
 	{
@@ -39,6 +39,26 @@ static void	ft_affiche(intmax_t nb, int sign, int size, int fd)
 	}
 }
 
+static intmax_t	ft_complete_overflow(intmax_t nb, char *str, int i, int *sign)
+{
+	if (nb <= 223372036854775808 && str[i] == '9' && i == 1)
+	{
+		nb = ft_atoi(str);
+		nb = (nb < 0) ? -nb : nb;
+		(*sign) = (ft_atoi(str) < 0) ? 1 : 0;
+		return (nb);
+	}
+	else if (nb <= 223372036854775807 && str[i] == '9' && i == 0)
+	{
+		nb = ft_atoi(str);
+		(*sign) = 0;
+		return (nb);
+	}
+	nb = (i == 1) ? 0 : 1;
+	(*sign) = (i == 1) ? 0 : 1;
+	return (nb);
+}
+
 static intmax_t	ft_overflow(char *str, int *sign)
 {
 	intmax_t	nb;
@@ -47,52 +67,37 @@ static intmax_t	ft_overflow(char *str, int *sign)
 	nb = 0;
 	i = (str[0] == '-') ? 1 : 0;
 	if (ft_strlen(str + i) > 19)
+	{
+		(*sign) = (i == 1) ? 0 : 1;
 		nb = (i == 1) ? 0 : 1;
+	}
 	if (ft_strlen(str + i) == 19)
 	{
 		if (str[i] != '9')
 			return (ft_atoi(str + i));
-		nb = ft_atoi(str + i + 1);
-		if (nb <= 223372036854775808 && str[i] == '9' && i == 1)
-		{
-			nb = ft_atoi(str);
-			nb = (nb < 0) ? -nb : nb;
-			(*sign) = (ft_atoi(str) < 0) ? 1 : 0;
-			return (nb);
-		}
-		else if (nb <= 223372036854775807 && str[i] == '9' && i == 0)
-		{
-			nb = ft_atoi(str);
-			(*sign) = 0;
-			return (nb);
-		}
-		nb = (i == 1) ? 0 : 1;
+		nb = ft_complete_overflow(ft_atoi(str + i + 1), str, i, sign);
 	}
-	(*sign) = (i == 1) ? 0 : 1;
 	return (nb);
 }
 
-static void	ft_complete_write(t_ligne **line, char *str, int l, int fd)
+static void		ft_complete_write(t_ligne **line, char *str, int l, int fd)
 {
 	int			sign;
 	intmax_t	nb;
 	int			i;
 
 	i = (str[0] == '%') ? 1 : 0;
-	sign = 0;
 	if (str[i] == ':')
 	{
 		nb = (*line)->pos[l];
 		nb = ((*line)->pos[l] < 0) ? -nb : nb;
-		if ((*line)->pos[l] < 0)
-			sign = 1;
+		sign = ((*line)->pos[l] < 0) ? 1 : 0;
 	}
 	else
 	{
 		nb = ft_atoi(str + i);
 		nb = (nb < 0) ? -nb : nb;
-		if (ft_atoi(str + i) < 0)
-			sign = 1;
+		sign = (ft_atoi(str + i) < 0) ? 1 : 0;
 		if (ft_strlen(str + i) >= 19)
 			nb = ft_overflow(str + i, &sign);
 	}
@@ -104,23 +109,37 @@ static void	ft_complete_write(t_ligne **line, char *str, int l, int fd)
 		ft_affiche(nb, sign, 16, fd);
 }
 
-void		ft_write_arg(t_ligne **line, int k, int fd)
+static char		**trim_instruct(t_ligne **line)
+{
+	int			i;
+	char		*tmp;
+	char		**str;
+
+	i = -1;
+	if ((str = ft_strsplit((*line)->arg, ',')) == NULL)
+		return (NULL);
+	while (str[++i])
+	{
+		tmp = str[i];
+		if ((str[i] = ft_strtrim(str[i])) == NULL)
+			return (NULL);
+		ft_strdel(&tmp);
+	}
+	return (str);
+}
+
+void			ft_write_arg(t_ligne **line, int k, int fd)
 {
 	char		**str;
 	int			j;
 	int			l;
 	intmax_t	nb;
-	char		*tmp;
 
 	l = 0;
-	if ((str = ft_strsplit((*line)->arg, ',')) == NULL)
+	if ((str = trim_instruct(line)) == NULL)
 		return ;
 	while (str[++k])
 	{
-		tmp = str[k];
-		if ((str[k] = ft_strtrim(str[k])) == NULL)
-			return ;
-		ft_strdel(&tmp);
 		j = 0;
 		while (ft_isblank(str[k][j]))
 			j++;

@@ -22,7 +22,7 @@ int				ft_islabel(char *str)
 	return (i);
 }
 
-int			ft_find_label_instruct(int *k, t_ligne **nline, char **str)
+int				ft_find_label_instruct(int *k, t_ligne **nline, char **str)
 {
 	int			i;
 	int			j;
@@ -51,7 +51,7 @@ int			ft_find_label_instruct(int *k, t_ligne **nline, char **str)
 	return (i);
 }
 
-char		*ft_strnew_c(size_t size, char c)
+char			*ft_strnew_c(size_t size, char c)
 {
 	char	*str;
 	size_t	i;

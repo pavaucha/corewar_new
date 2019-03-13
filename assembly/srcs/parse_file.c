@@ -66,8 +66,11 @@ int		check_file(t_file *x, char **buf, int *i, int ret)
 	return (0);
 }
 
-int		no_newline(t_file *x)
+int		no_newline(t_file *x, char *buf, int ret)
 {
+	fill_label(NULL, x, 0, 3);
+	if (ret == 0 || buf)
+		ft_strdel(&buf);
 	if (!x->body)
 		return (0);
 	if (!(x->err >= 5 && x->err <= 11) && x->err != 2 && x->err != 4
@@ -85,10 +88,7 @@ int		err(t_file *x, int ret, char *buf)
 {
 	char	**file;
 
-	fill_label(NULL, x, 0, 3);
-	if (ret == 0 || buf)
-		ft_strdel(&buf);
-	if (no_newline(x) == -1)
+	if (no_newline(x, buf, ret) == -1)
 		return (-1);
 	if (ret == 0 && x->l == -1)
 		save_err(x, x->c, 14);
@@ -131,8 +131,7 @@ int		parse_file(t_file *x, char *buf)
 			continue ;
 		if (!x->err)
 			if (!(x->s = ft_strjoin_char(x->s, x->body ? buf : "", '\n')))
-				break;
-				// return (-1);
+				break ;
 		ft_strdel(&buf);
 	}
 	if (err(x, ret, buf) == -1)

@@ -84,9 +84,9 @@ static int		ft_slabel(t_ligne *tmp, int count, t_ligne **line, char *str)
 
 	if (!tmp)
 		return (0);
+	tmp_2 = (tmp->nb_octet_pos > (*line)->nb_octet_pos) ? *line : tmp->next;
 	if (tmp->nb_octet_pos > (*line)->nb_octet_pos)
 	{
-		tmp_2 = *line;
 		while (ft_strcmp(tmp_2->label, str) != 0)
 		{
 			count = count + tmp_2->nb_loctet;
@@ -96,7 +96,6 @@ static int		ft_slabel(t_ligne *tmp, int count, t_ligne **line, char *str)
 	else if (tmp->nb_octet_pos < (*line)->nb_octet_pos)
 	{
 		count = count - tmp->nb_loctet;
-		tmp_2 = tmp->next;
 		while (tmp_2 && tmp_2->nb_octet_pos != (*line)->nb_octet_pos)
 		{
 			count = count - tmp_2->nb_loctet;
