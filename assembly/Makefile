@@ -6,7 +6,7 @@
 #    By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 09:44:22 by pavaucha          #+#    #+#              #
-#    Updated: 2019/03/12 13:40:04 by pavaucha         ###   ########.fr        #
+#    Updated: 2019/03/13 16:18:19 by pavaucha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ SOURCES = 	srcs/main.c \
 			srcs/swap_bits_16.c \
 			srcs/ft_encoding.c \
 			srcs/ft_strnew_c.c \
-			srcs/fill_call_label.c
+			srcs/fill_call_label.c \
+			srcs/create_struct.c \
+			srcs/ft_overflow.c
 
 INCLUDES = includes/asm.h
 

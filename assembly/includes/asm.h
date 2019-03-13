@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/03 12:15:14 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/11 14:27:46 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:16:56 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,5 +330,17 @@ int							inst_wrong2(t_file *x, char *buf);
 */
 
 void						other_wrong(t_file *x, char *buf, int c);
+
+/*
+** create_struct.c
+*/
+
+t_ligne			*initialize_struct(char **str, int i);
+
+/*
+** ft_overflow.c
+*/
+
+intmax_t	    ft_overflow(char *str, int *sign);
 
 #endif
