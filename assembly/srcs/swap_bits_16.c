@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 20:24:54 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/12 17:57:53 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:13:12 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char		*ft_negative_nb(char *str, int i)
 	char	*dst;
 
 	j = -1;
-	if ((dst = ft_strnew(i)) == NULL)
+	if ((dst = ft_strnew((size_t)i)) == NULL)
 		return (NULL);
 	while (str[++j])
 		dst[j] = (str[j] == '0') ? '1' : '0';
