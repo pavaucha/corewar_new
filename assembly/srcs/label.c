@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/19 16:57:22 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/13 13:47:09 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/13 16:02:22 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ static int		ft_slabel(t_ligne *tmp, int count, t_ligne **line, char *str)
 		}
 	}
 	else if (tmp->nb_octet_pos == (*line)->nb_octet_pos)
-		return ((*line)->nb_octet_pos - (*line)->nb_loctet);
+		return ((*line)->nb_loctet);
 	return (count);
 }
 
