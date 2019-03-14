@@ -78,11 +78,7 @@ LIBFT = ft_strlen		\
 		ft_strncpy 		\
 		ft_strndup 		\
 		ft_tolower 		\
-		ft_memset 		\
-		get_next_line
-
-
-
+		ft_memset 		
 
 PRINTF = ft_printf			\
 		 ft_check_flags		\
@@ -137,7 +133,6 @@ INC = $(INCLIBFT) $(INCPRINTF)
 
 INCFILE = $(INCDIR)/libft.h			\
 		  $(INCDIR)/ft_printf.h		\
-		  $(INCDIR)/get_next_line.h	\
 		  $(INCDIR)/color.h
 
 ###############

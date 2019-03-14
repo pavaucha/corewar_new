@@ -22,7 +22,6 @@ CFLAGS			:=	-Wall  \
 #			-fno-omit-frame-pointer		\
 #			-fsanitize-address-use-after-scope
 
-
 SOURCES = 	srcs/main.c \
 			srcs/parse_file.c \
 			srcs/check_line.c \
@@ -50,11 +49,13 @@ SOURCES = 	srcs/main.c \
 			srcs/ft_strnew_c.c \
 			srcs/fill_call_label.c \
 			srcs/create_struct.c \
-			srcs/ft_overflow.c
+			srcs/ft_overflow.c \
+			srcs/ft_read.c
 
-INCLUDES = includes/asm.h
+INCLUDES =	includes/asm.h \
+			includes/ft_read.h
 
-SRCS 			=	$(SOURCES) #$(addprefix srcs/, $(SOURCES))
+SRCS 			=	$(SOURCES)
 
 OFILES			=	${SRCS:.c=.o}
 

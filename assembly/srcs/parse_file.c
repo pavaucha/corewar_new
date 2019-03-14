@@ -120,7 +120,7 @@ int		parse_file(t_file *x, char *buf)
 	int		i;
 
 	buf = NULL;
-	while ((ret = get_next_line(x->fd, &buf)) != 0)
+	while ((ret = ft_read(x->fd, &buf)) != 0)
 	{
 		if (x->l == 0 && buf[0] != '\0' && !ft_isblank(buf[0]) && buf[0] != '#'
 			&& buf[0] != '\n' && buf[0] != '.' && buf[0] != ';')

@@ -34,7 +34,7 @@ int				free_parsing(t_file *x, int c)
 	char			*buf;
 
 	if (c == 1)
-		while ((get_next_line(x->fd, &buf)) > 0)
+		while ((ft_read(x->fd, &buf)) > 0)
 			ft_strdel(&buf);
 	while (x->label)
 	{

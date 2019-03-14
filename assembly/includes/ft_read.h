@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_read.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pavaucha <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mavui <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/03 12:21:46 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/01/14 15:02:20 by pavaucha         ###   ########.fr       */
+/*   Created: 2019/03/14 13:38:55 by mavui             #+#    #+#             */
+/*   Updated: 2019/03/14 13:38:59 by mavui            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 16
+#ifndef FT_READ_H
+# define FT_READ_H
+
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
@@ -20,6 +20,8 @@
 # include <limits.h>
 # include "libft.h"
 
-int		get_next_line(const int fd, char **line);
+# define BUFF_SIZE 16
+
+int		ft_read(const int fd, char **line);
 
 #endif

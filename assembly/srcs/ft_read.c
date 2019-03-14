@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_read.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mavui <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/26 15:49:52 by mavui             #+#    #+#             */
-/*   Updated: 2019/02/26 15:49:58 by mavui            ###   ########.fr       */
+/*   Created: 2019/03/14 13:38:44 by mavui             #+#    #+#             */
+/*   Updated: 2019/03/14 13:38:47 by mavui            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_next_line.h>
+#include <ft_read.h>
 
-static char		*ft_read(const int fd, char *str)
+static char		*read_file(const int fd, char *str)
 {
 	char	*buf;
 	char	*endl;
@@ -61,7 +61,7 @@ static int		ft_last_line(int fd, char **line, char **gnl)
 	return (-1);
 }
 
-int				get_next_line(const int fd, char **line)
+int				ft_read(const int fd, char **line)
 {
 	static char		*gnl[OPEN_MAX] = {NULL};
 	int				ret;
@@ -71,7 +71,7 @@ int				get_next_line(const int fd, char **line)
 		return (-1);
 	if (!gnl[fd] && (gnl[fd] = ft_strnew(1)) == NULL)
 		return (-1);
-	if ((gnl[fd] = ft_read(fd, gnl[fd])) == NULL)
+	if ((gnl[fd] = read_file(fd, gnl[fd])) == NULL)
 		return (-1);
 	if (ft_last_line(fd, line, gnl) == 1)
 		return (2);

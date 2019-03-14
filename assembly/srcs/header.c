@@ -42,7 +42,7 @@ int		quote_arg(t_file *x, char **buf, char *s2, int *j)
 	{
 		s2[(*j)++] = 127;
 		ft_strdel(buf);
-		if ((ret = get_next_line(x->fd, buf)) == -1 || (*buf) == NULL)
+		if ((ret = ft_read(x->fd, buf)) == -1 || (*buf) == NULL)
 		{
 			x->l -= 1;
 			return (-1);
