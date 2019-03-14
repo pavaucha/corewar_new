@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/13 16:09:52 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/13 16:14:19 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/14 13:32:34 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,10 @@ static t_ligne	*begin_struct(char **str, int *j, int *i)
 
 static t_ligne	*initialize_complet(char **str, int i, int j, t_ligne *line)
 {
-	if (str[i][j] == '\0' || str[i][j] == '\t' || str[i][j] == ' ')
+	if (i == 0 && (str[i][j] == '\0' || str[i][j] == '\t' || str[i][j] == ' '
+		|| (str[i][j] == ':' && str[i][j - 1] == '%')))
 	{
+		j = (str[i][j - 1] == '%') ? j - 1 : j;
 		while (j > 0 && str[i][j] != ':')
 			j--;
 		j++;
