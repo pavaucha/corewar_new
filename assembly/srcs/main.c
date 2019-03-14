@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 06:58:51 by mavui             #+#    #+#             */
-/*   Updated: 2019/03/14 14:55:57 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/14 15:36:51 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,5 @@ int				main(int ac, char **av)
 		return (free_parsing(&x, 1));
 	convert_name_com(x.file, x.name_f);
 	free_parsing(&x, 0);
-	while (1);
 	return (0);
 }
