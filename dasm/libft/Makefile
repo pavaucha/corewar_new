@@ -6,7 +6,7 @@
 #    By: pavaucha <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/03 12:20:26 by pavaucha          #+#    #+#              #
-#    Updated: 2019/03/07 15:54:47 by pavaucha         ###   ########.fr        #
+#    Updated: 2019/03/14 16:04:39 by mavui            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,16 +152,13 @@ all: $(NAME)
 $(NAME): $(OBJ) $(INCFILE)
 	@ ar rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
-	@ echo "La librairie $@	\033[1;32mCreate\033[0m"
 
 clean:
 	@ rm -rf $(OBJDIR)
 	@ rm -rf $(PRINTFDIR)/$(OBJDIR)
-	@ echo "$@ libft		\033[1;32mOK\033[0m"
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "$@ libft		\033[1;32mOK\033[0m"
 
 re: fclean all
 

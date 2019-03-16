@@ -144,16 +144,13 @@ all: $(NAME)
 $(NAME): $(OBJ) $(INCFILE)
 	@ ar rc $(NAME) $(OBJ)
 	@ ranlib $(NAME)
-	@ echo "La librairie $@	\033[1;32mCreate\033[0m"
 
 clean:
 	@ rm -rf $(OBJDIR)
 	@ rm -rf $(PRINTFDIR)/$(OBJDIR)
-	@ echo "$@ libft		\033[1;32mOK\033[0m"
 
 fclean: clean
 	@ rm -f $(NAME)
-	@ echo "$@ libft		\033[1;32mOK\033[0m"
 
 re: fclean all
 

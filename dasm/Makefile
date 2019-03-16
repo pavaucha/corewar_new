@@ -6,7 +6,7 @@
 #    By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/08 09:44:22 by pavaucha          #+#    #+#              #
-#    Updated: 2019/03/07 10:45:54 by pavaucha         ###   ########.fr        #
+#    Updated: 2019/03/14 16:06:06 by mavui            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,23 +34,22 @@ OFILES			=	${SRCS:.c=.o}
 all: $(NAME)
 
 $(NAME): libft $(OFILES)
-	gcc $(OFILES) $(OFLAGS) $(LIBS) libft/libft.a -o $(NAME)
+	@gcc $(OFILES) $(OFLAGS) $(LIBS) libft/libft.a -o $(NAME)
 
 %.o: %.c $(INCLUDES)
-	$(CC)  $< -c $(CFLAGS) -Iincludes -Ilibft/includes -o $@
+	@$(CC)  $< -c $(CFLAGS) -Iincludes -Ilibft/includes -o $@
 
 libft: libft/libft.a
 
 libft/libft.a:
-	make -C libft/
+	@make -C libft/
 
 clean:
-	/bin/rm -f $(OFILES)
-	make -C libft/ clean
+	@/bin/rm -f $(OFILES)
+	@make -C libft/ clean
 
 fclean: clean
-	make -C libft/ fclean
+	@make -C libft/ fclean
 	@/bin/rm -f $(NAME)
-	@/bin/rm -rf $(NAME).dSYM/
 
 re: fclean all
