@@ -98,6 +98,14 @@ int				check_label(char *buf, t_file *x)
 	i = x->c;
 	while (buf[i] && (ft_isalnum(buf[i]) || buf[i] == '_'))
 		i++;
+	if (i == x->c)
+	{
+		if (x->name_err == NULL)
+			if (!(x->name_err = ft_strndup(&buf[x->c], ft_strlen_custom(&buf[x->c]))))
+				return (-1);
+		save_err(x, x->c, 16);
+		return (1);
+	}
 	if (buf[i] == ':')
 	{
 		fill_label(buf, x, i++ - x->c, 1);

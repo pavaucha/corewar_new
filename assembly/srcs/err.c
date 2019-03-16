@@ -76,7 +76,7 @@ void	print_err3(t_file *x, int c)
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] END \"(null)\"\n",
 					x->line_err + 1, x->col_err);
 	else if (c == 16)
-		ft_printf("Syntax error at token [TOKEN][%03d:%03d] LABEL \"%s:\"\n",
+		ft_printf("Syntax error at token [TOKEN][%03d:%03d] LABEL \"%s\"\n",
 					x->line_err, x->col_err, x->name_err);
 	else if (c == 17)
 		ft_printf("Syntax error at token [TOKEN][%03d:%03d] STRING\n",
