@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 06:59:01 by mavui             #+#    #+#             */
-/*   Updated: 2019/02/27 19:56:32 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:20:15 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ int		no_newline(t_file *x, char *buf, int ret)
 		ft_strdel(&buf);
 	if (!x->body)
 		return (0);
-	if (!(x->err >= 1 && x->err <= 11) && x->err != 13 && x->err != 14 &&
-		!x->endline && x->err != 17 && x->err != 18
+	if (!(x->err >= 1 && x->err <= 11) && x->err != 13 && x->err != 14
+		&& !x->endline && x->err != 17 && x->err != 18
 		&& x->comment && x->name)
 	{
 		ft_putstr_fd("Syntax error - unexpected end of input ", 2);
