@@ -154,7 +154,7 @@ int							inst_aff(char *buf, t_file *x);
 int							fill_exec_label(char *buf, t_file *x,
 							int len, int c);
 int							fill_label(char *buf, t_file *x, int len, int c);
-int							check_label(char *buf, t_file *x);
+int							check_label(char *buf, t_file *x, int i);
 
 /*
 ** check_line.c

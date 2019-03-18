@@ -91,17 +91,16 @@ int				fill_label(char *buf, t_file *x, int len, int c)
 	return (0);
 }
 
-int				check_label(char *buf, t_file *x)
+int				check_label(char *buf, t_file *x, int i)
 {
-	int i;
-
 	i = x->c;
 	while (buf[i] && (ft_isalnum(buf[i]) || buf[i] == '_'))
 		i++;
 	if (i == x->c)
 	{
 		if (x->name_err == NULL)
-			if (!(x->name_err = ft_strndup(&buf[x->c], ft_strlen_custom(&buf[x->c]))))
+			if (!(x->name_err = ft_strndup(&buf[x->c],
+					ft_strlen_custom(&buf[x->c]))))
 				return (-1);
 		save_err(x, x->c, 16);
 		return (1);

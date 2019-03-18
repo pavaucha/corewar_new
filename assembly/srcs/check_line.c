@@ -77,7 +77,7 @@ int		body(char *buf, t_file *x)
 		inst_wrong(x, buf);
 		return (0);
 	}
-	if (check_label(buf, x) == 1)
+	if (check_label(buf, x, 0) == 1)
 		return (0);
 	x->err = 0;
 	if (char_err(buf, x) == -1)
