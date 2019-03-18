@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 20:24:54 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/13 16:13:12 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:24:02 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			ft_swap_bits_16(char *dst, int sign)
 	char		*str;
 
 	j = -1;
-	if ((str = ft_strnew(16)) == NULL)
+	if ((str = ft_strnew(16)) == NULL || dst == NULL)
 		return (-1);
 	i = (int)ft_strlen(dst) - 1;
 	while (++i < 16)

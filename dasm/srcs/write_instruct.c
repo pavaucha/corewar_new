@@ -6,7 +6,7 @@
 /*   By: pavaucha <pavaucha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/06 14:39:11 by pavaucha          #+#    #+#             */
-/*   Updated: 2019/03/07 10:39:04 by pavaucha         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:27:22 by pavaucha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static int		write_dir(int fd, t_champ champ, int i)
 	j = ft_atoi_base(str, 2);
 	ft_strdel(&str);
 	str = ft_itoa(j);
-	write(fd, str, ft_strlen(str));
+	if (str != NULL)
+		write(fd, str, ft_strlen(str));
 	ft_strdel(&str);
 	return (i + 4);
 }
